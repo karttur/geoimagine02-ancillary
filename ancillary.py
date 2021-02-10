@@ -4,18 +4,27 @@ Created on 22 Jan 2021
 @author: thomasgumbricht
 '''
 
+# Standard library imports
 
-#from os import path, makedirs, remove, system
 import os
-from sys import exit
-#from geoimagine.kartturmain import Composition, RegionLayer, RasterLayer
-from params import Composition, RegionLayer, RasterLayer
-from ancillary import ancillary_import
-import support.karttur_dt as mj_dt 
-from gis import GetVectorProjection, GetRasterMetaData, MjProj
-from shutil import copyfile, copyfileobj
 
 import subprocess
+
+from sys import exit
+
+from shutil import copyfile, copyfileobj
+
+# Third party imports
+
+# Package application imports
+
+from params import Composition, RegionLayer, RasterLayer
+
+from ancillary import ancillary_import
+
+import support.karttur_dt as mj_dt 
+
+from gis import GetVectorProjection, GetRasterMetaData, MjProj
 
 class AncilComposition(Composition): 
     def __init__(self,compD):

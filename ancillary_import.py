@@ -4,19 +4,31 @@ Created on 22 Jan 2021
 @author: thomasgumbricht
 '''
 
-#imports
-from __future__ import division
-import sys
-import gdal
-from gdalconst import *
-import array as arr
-import struct
-from osgeo import osr
-import os
-import numpy as np
-from support import karttur_dt as mj_dt
+# Standard library imports
 
-#import mj_datetime_v70 as mj_dt
+from __future__ import division
+
+import sys
+
+import os
+
+import struct
+
+import array as arr
+
+# Third party imports
+
+import gdal
+
+from gdalconst import *
+
+from osgeo import osr
+
+import numpy as np
+
+# Package application imports
+
+from support import karttur_dt as mj_dt
 
 class Composition:
     def __init__(self,celltype,cellnull):
