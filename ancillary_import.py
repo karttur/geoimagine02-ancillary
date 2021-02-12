@@ -1,5 +1,6 @@
 '''
 Created on 22 Jan 2021
+Last updated on 12 Feb 2021
 
 @author: thomasgumbricht
 '''
@@ -28,7 +29,7 @@ import numpy as np
 
 # Package application imports
 
-from support import karttur_dt as mj_dt
+from geoimagine.support import karttur_dt as mj_dt
 
 class Composition:
     def __init__(self,celltype,cellnull):
@@ -58,28 +59,30 @@ def FixGDALPalette(paletteT):
     return PcR,AT,paletteT[c][0]
 
 def RasterPalette(paletteT):
-        PcR,AT,maxAT = FixGDALPalette(paletteT)
-        ct = gdal.ColorTable() 
-        '''
-        For discrete colors
-        #ct.CreateColorRamp(0,(178,223,138),5,(255,127,0))
-        #ct.CreateColorRamp(Pcr)
-        for c in PcR:
+    '''
+    '''
+    PcR,AT,maxAT = FixGDALPalette(paletteT)
+    ct = gdal.ColorTable() 
+    '''
+    For discrete colors
+    #ct.CreateColorRamp(0,(178,223,138),5,(255,127,0))
+    #ct.CreateColorRamp(Pcr)
+    for c in PcR:
 
-            ct.SetColorEntry(c[0],c[1])
-        '''
-        #for color ramps
-        for c in range(1,len(PcR)):
-            ct.CreateColorRamp(PcR[c-1][0],PcR[c-1][1],PcR[c][0],PcR[c][1])
-        return ct
-        '''
-        dst_ds.GetRasterBand(1).SetColorTable(ct) 
-        
-        rat = gdal.RasterAttributeTable()
-        rat.CreateColumn("Value", GFT_String, GFT_String)
-        for i in range(maxAT): 
-            rat.SetValueAsString(i, 0, AT[i])
-        dst_ds.GetRasterBand(1).SetDefaultRAT(rat)
+        ct.SetColorEntry(c[0],c[1])
+    '''
+    #for color ramps
+    for c in range(1,len(PcR)):
+        ct.CreateColorRamp(PcR[c-1][0],PcR[c-1][1],PcR[c][0],PcR[c][1])
+    return ct
+    '''
+    dst_ds.GetRasterBand(1).SetColorTable(ct) 
+    
+    rat = gdal.RasterAttributeTable()
+    rat.CreateColumn("Value", GFT_String, GFT_String)
+    for i in range(maxAT): 
+        rat.SetValueAsString(i, 0, AT[i])
+    dst_ds.GetRasterBand(1).SetDefaultRAT(rat)
         '''
 
 def GGHtranslate(inFPN,outFPN,celltype,cellnull,palette):

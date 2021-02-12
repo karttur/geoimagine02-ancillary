@@ -18,13 +18,13 @@ from shutil import copyfile, copyfileobj
 
 # Package application imports
 
-from params import Composition, RegionLayer, RasterLayer
+from geoimagine.params import Composition, RegionLayer, RasterLayer
 
-from ancillary import ancillary_import
+from geoimagine.ancillary import ancillary_import
 
-import support.karttur_dt as mj_dt 
+import geoimagine.support.karttur_dt as mj_dt 
 
-from gis import GetVectorProjection, GetRasterMetaData, MjProj
+from geoimagine.gis import GetVectorProjection, GetRasterMetaData, MjProj
 
 class AncilComposition(Composition): 
     def __init__(self,compD):
