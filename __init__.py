@@ -14,4 +14,6 @@ from .version import __version__, VERSION, metadataD
 
 from .ancillary import ProcessAncillary
 
+from .searchjson import SearchJsonTandemX, UnZipJsonTandemX
+
 __all__ = ['ProcessAncillary']
